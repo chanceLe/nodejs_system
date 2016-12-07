@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>welcome to register</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <style media="screen">
+    *{
+      margin: 0;padding: 0;
+    }
+      h1{
+    margin-top: 10%;
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 30px;
+      }
+      p{
+        text-align: center;
+        font-size: 16px;
+      }
+      form{
+        text-align: center;
+        border: 1px solid gray;
+        width: 420px;
+        height: 200px;
+        padding: 50px;
+        margin: 0 auto;
+      }
+      a{
+        text-decoration: none;
+        width: 170px;
+        height: 28px;
+        line-height: 28px;
+        display: block;
+        text-align: center;
+      }
+      form button{
+        width: 170px;
+        height: 30px;
+      }
+      form span{
+        display: none;
+      }
+      form span i{
+        color: red;
+      }
+
+      .box{
+        width: 100%;
+
+      }
+      .box h2{
+          display:block;
+          margin: 0 auto;
+          width: 520px;
+        }
+    </style>
+  </head>
+  <body>
+    <h1>Register</h1>
+    <p>Welcome to CustomerSystem</p>
+    <% if(tip!==null){ %>
+       <div class="box">
+         <h2><%= tip %></h2>
+       </div>
+    <%}%>
+
+    <form action="/regis" onsubmit="return verify()" method="post">
+      用户名：<input id="username" type="text" name="name">  <br><br>
+      密&nbsp; &nbsp; 码：<input id="username" type="password" name="password">  <br><br>
+      注册类型：
+      <select class="" id="mark" name="mark">
+        <option value="1">Counselor</option>
+        <option value="2">Accounter</option>
+        <option value="3">Head Teacher</option>
+        <option value="4">Lecturer</option>
+        <option value="5">Employment Teacher</option>
+      </select>   <br><br>
+      <span id="tip"> <i>*</i>请填写用户名或密码 </span> <br><br>
+      <button type="submit">注册</button>
+      <button ><a href="/log">已有账号，直接登录</a></button>
+    </form>
+
+    <script type="text/javascript">
+      function verify(){
+        var  username= document.getElementById('username');
+        var  password= document.getElementById('password');
+          var  marks= document.getElementById('mark');
+        var  tips= document.getElementById('tip');
+
+        if(!username.value || !password.value || !mark.value) {
+          tips.style.display = "block";
+          return false;
+        }else{
+          return true;
+        }
+
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <style media="screen">
+        ul{
+          border: 1px solid yellow;
+          width: 48%;
+          position: relative;
+        }
+        ul li:last-child a{
+          display: block;
+          width:30px;
+          height: 30px;
+          position: absolute;
+          right: 0;
+          top: 0;
+        }
+        ul li{
+          list-style: none;
+        }
+        table{
+          border: 1px solid rgb(65, 23, 98);
+          text-align: center;
+          width: 100%;
+        }
+        table td{
+          width: 50px;
+          height: 30px;
+        }
+        table tr:first-child{
+          font-size: 17px;
+          font-weight: bolder;
+        }
+    </style>
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= system %></p>
+
+  <div class="box">
+     <a href="/newcustomer">新建</a>
+     <a href="/followinglist">跟踪</a>
+     <a href="/complete">已完成</a>
+  </div>
+    <% if (info){%>
+
+       <!-- <ul>
+         <li><strong>Name:</strong><%=info.name %> </li>
+         <li><strong>Intention:</strong><%=info.intention %></li>
+         <li><strong>Major:</strong><%=info.major %></li>
+         <li><strong>Tel:</strong><%=info.tel %></li>
+         <li><strong>Guide:</strong><%=info.guide %></li>
+         <li><strong>LastTime:</strong><%=info.lasttime %></li>
+         <li><strong>State:</strong><%=info.state %></li>
+         <li><a href="#">跟踪</a></li>
+       </ul> -->
+
+       <table border="1px" cellspacing="0" >
+         <tr><td>Name</td><td>Intention</td><td>Tel</td><td>LastTime</td><td>State</td><td>操作</td></tr>
+           <% info.forEach(function(info){  %>
+          <tr>
+            <td><%=info.name %></td>
+            <td><%=info.intention%></td>
+            <td><%=info.tel %></td>
+            <td><%=info.lasttime %></td>
+            <td><%=info.state %></td>
+            <td><a href="/<%=info.id%>">跟踪</a></td></tr>
+           <%  })%>
+       </table>
+
+    <%} else if(following){ %>
+
+      <% following.forEach(function(follow){  %>
+         <ul>
+           <li><strong>Name:</strong><%=follow.name %> </li>
+           <li><strong>Intention:</strong><%=follow.intention %></li>
+           <li><strong>Major:</strong><%=follow.major %></li>
+           <li><strong>Tel:</strong><%=follow.tel %></li>
+           <li><strong>Guide:</strong><%=follow.guide %></li>
+           <li><strong>LastTime:</strong><%=follow.lasttime %></li>
+           <li><strong>State:</strong><%=follow.state %></li>
+           <li><a href="/<%=follow.id%>">跟踪</a></li>
+         </ul>
+      <%  })%>
+      <%} else if(completes){ %>
+        <% completes.forEach(function(follow){  %>
+           <ul>
+             <li><strong>Name:</strong><%=follow.name %> </li>
+             <li><strong>Intention:</strong><%=follow.intention %></li>
+             <li><strong>Major:</strong><%=follow.major %></li>
+             <li><strong>Tel:</strong><%=follow.tel %></li>
+             <li><strong>Guide:</strong><%=follow.guide %></li>
+             <li><strong>LastTime:</strong><%=follow.lasttime %></li>
+             <li><strong>State:</strong><%=follow.state %></li>
+             <li></li>
+           </ul>
+        <%  })%>
+  <%} else if(completes==null){ %>
+    <h2>没有已完成信息！</h2>
+      <% }  %>
+  </body>
+</html>
