@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>
+
+    </title>
+    <style>
+    .box{
+      width: 100%;
+
+    }
+    .box h2{
+        display:block;
+        margin: 0 auto;
+        width: 520px;
+      }
+      textarea{
+        resize:none;
+      }
+    </style>
+  </head>
+  <body>
+    <h1><%=title %></h1>
+    <p>Welcome to CustomerSystem</p>
+
+
+    <% if(info){ %>
+      <ul>
+        <li><strong>Name:</strong><%=info.name %> </li>
+        <li><strong>Intention:</strong><%=info.intention %></li>
+        <li><strong>Major:</strong><%=info.major %></li>
+        <li><strong>Tel:</strong><%=info.tel %></li>
+        <li><strong>Guide:</strong><%=info.guide %></li>
+        <li><strong>LastTime:</strong><%=info.lasttime %></li>
+        <li><strong>State:</strong><%=info.state %></li>
+      </ul>
+    <%}%>
+    <% if(text){ %>
+      <% text.forEach(function(text){ %>
+      <ul>
+        <li><%=text%> </li>
+      </ul>
+        <%  })%>
+    <%}%>
+
+
+     <form class="" action="/addrecord" method="post">
+       <textarea  name="record" rows="8" cols="40"></textarea>
+       <button type="submit">保存</button>
+       <a href="/backshouye">退出</a>
+     </form>
+  </body>
+</html>

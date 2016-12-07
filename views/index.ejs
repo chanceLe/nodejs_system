@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <style media="screen">
+    *{margin: 0;padding: 0}
+      h1{
+    margin-top: 10%;
+    margin-bottom: 30px;
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+      }
+      p{
+        text-align: center;
+        font-size: 16px;
+      }
+      form{
+        text-align: center;
+        border: 1px solid gray;
+        width: 420px;
+        height: 140px;
+        padding: 50px;
+        margin: 0 auto;
+      }
+      a{
+        text-decoration: none;
+        width: 120px;
+        height: 28px;
+        display: block;
+        line-height:28px;
+        text-align: center;
+      }
+      form button{
+        width: 120px;
+        height: 30px;
+        overflow: hidden;
+      }
+      form span{
+        display: none;
+      }
+      form span i{
+        color: red;
+      }
+       .box{
+          width: 100%;
+
+        }
+        .box h2{
+            display:block;
+            margin: 0 auto;
+            width: 520px;
+          }
+    </style>
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+    <% if(tip!==null){ %>
+       <div class="box">
+         <h2><%= tip %></h2>
+       </div>
+    <%}%>
+    <form action="/" onsubmit="return verify()" method="post">
+      用户名：<input id="username" type="text" name="name"  align="center">  <br><br>
+      密&nbsp; &nbsp; 码：<input id="password" type="password" name="password" align="center">  <br><br>
+      <span id="tip"> <i>*</i>请填写用户名或密码 </span> <br><br>
+      <button type="submit">登录</button>
+      <button ><a href="/regis">注册</a></button>
+    </form>
+     <script type="text/javascript">
+       function verify(){
+         var  username= document.getElementById('username');
+         var  password= document.getElementById('password');
+         var  tips= document.getElementById('tip');
+
+         if(!username.value || !password.value) {
+           tips.style.display = "block";
+           return false;
+         }else{
+           return true;
+         }
+
+       }
+     </script>
+  </body>
+</html>
