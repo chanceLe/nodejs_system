@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>welcome to register</title>
+    <title>welcome to payment</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <style media="screen">
     *{
@@ -22,7 +22,7 @@
         text-align: center;
         border: 1px solid gray;
         width: 420px;
-        height: 200px;
+        height: 300px;
         padding: 50px;
         margin: 0 auto;
       }
@@ -57,7 +57,7 @@
     </style>
   </head>
   <body>
-    <h1>Register</h1>
+    <h1>Create New Customer</h1>
     <p>Welcome to CustomerSystem</p>
     <% if(tip!==null){ %>
        <div class="box">
@@ -65,36 +65,33 @@
        </div>
     <%}%>
 
-    <form action="/regis" onsubmit="return verify()" method="post">
-      用户名：<input id="username" type="text" name="name">  <br><br>
-      密&nbsp; &nbsp; 码：<input id="password" type="password" name="password">  <br><br>
-      注册类型：
-      <select class="" id="mark" name="mark">
-        <option value="1">Counselor</option>
-        <option value="2">Accounter</option>
-        <option value="3">Head Teacher</option>
-        <option value="4">Lecturer</option>
-        <option value="5">Employment Teacher</option>
-      </select>   <br><br>
-      <span id="tip"> <i>*</i>请填写用户名或密码 </span> <br><br>
-      <button type="submit">注册</button>
-      <button ><a href="/log">已有账号，直接登录</a></button>
+    <form action="/newresult" onsubmit="return verify()" method="post">
+
+       姓名：<input id="username" type="text"  name="name">  <br><br>
+       专业：<input id="major" type="text" name="major"> <br><br>
+       学习意向：<input id="intention" type="text" name="intention"> <br><br>
+       电话：<input id="tel" type="number" name="tel"> <br><br>
+       跟踪记录：<input type="text" id="record" name="record"> <br><br>
+      <span id="tip"> <i>*</i>请填写完整信息 </span> <br><br>
+      <button type="submit">创建</button>
+      <button ><a href="/backshouye">返回</a></button>
     </form>
 
     <script type="text/javascript">
       function verify(){
         var  username= document.getElementById('username');
-        var  password= document.getElementById('password');
-          var  marks= document.getElementById('mark');
+        var  major= document.getElementById('major');
+        var  intention= document.getElementById('intention');
+
+        var  tel= document.getElementById('tel');
         var  tips= document.getElementById('tip');
 
-        if(!username.value || !password.value || !marks.value) {
+        if(!username.value || !major.value || !tel.value || !intention.value ) {
           tips.style.display = "block";
           return false;
         }else{
           return true;
         }
-
       }
     </script>
   </body>

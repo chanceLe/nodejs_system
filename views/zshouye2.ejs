@@ -39,43 +39,46 @@
     <h1><%= title %></h1>
     <p>Welcome to <%= system %></p>
 
+ <% if(tip){%>
+    <h3> <%= tip %></h3>
+   <% } %>
+
   <div class="box">
-     <a href="/newcustomer">新建</a>
-     <a href="/followinglist">跟踪</a>
-     <a href="/complete">已完成</a>
+     <a href="/pay">新建缴费</a>
+     <a href="/select">查询</a>
   </div>
-  <% if(tip){ %>
-    <h3><%=tip %></h3>
-<%  }%>
     <% if (info){%>
        <table border="1px" cellspacing="0" >
-         <tr><td>Name</td><td>ID</td><td>Intention</td><td>Tel</td><td>LastTime</td><td>State</td><td>操作</td></tr>
+         <tr><td>Name</td><td>ID</td><td>Tel</td><td>State</td><td>操作</td></tr>
            <% info.forEach(function(info){  %>
           <tr>
             <td><%=info.name %></td>
-              <td><%=info.id %></td>
-            <td><%=info.intention%></td>
+            <td><%=info.id %></td>
             <td><%=info.tel %></td>
-            <td><%=info.lasttime %></td>
             <td><%=info.state %></td>
-            <td><a href="/<%=info.id%>">跟踪</a></td></tr>
+            <td><a href="/pay/<%=info.id%>">办理缴费</a></td>
+          </tr>
            <%  })%>
        </table>
 
-    <%} else if(following){ %>
+    <%} else if(selectresult){ %>
+        <table border="1px" cellspacing="0" >
+          <tr><td>Name</td><td>ID</td><td>Tuition</td><td>dormitory</td><td>Else</td><td>PIC</td><td>操作</td></tr>
+          <% selectresult.forEach(function(follow){  %>
+           <tr>
+             <td><%=follow.name %></td>
+             <td><%=follow.id %></td>
+             <td><%=follow.tuition %></td>
+             <td><%=follow.dormitory %></td>
+             <td><%=follow.elsefee %></td>
+              <td><%=follow.pic %></td>
+             <td><a href="/updatepay/<%=follow.id%>">办理缴费</a></td>
+           </tr>
+            <%  })%>
+        </table>
+         <button><a href="/backpay">返回主界面</a></button>
 
-      <% following.forEach(function(follow){  %>
-         <ul>
-           <li><strong>Name:</strong><%=follow.name %> </li>
-           <li><strong>Intention:</strong><%=follow.intention %></li>
-           <li><strong>Major:</strong><%=follow.major %></li>
-           <li><strong>Tel:</strong><%=follow.tel %></li>
-           <li><strong>Guide:</strong><%=follow.guide %></li>
-           <li><strong>LastTime:</strong><%=follow.lasttime %></li>
-           <li><strong>State:</strong><%=follow.state %></li>
-           <li><a href="/<%=follow.id%>">跟踪</a></li>
-         </ul>
-      <%  })%>
+
       <%} else if(completes){ %>
         <% completes.forEach(function(follow){  %>
            <ul>
@@ -89,7 +92,7 @@
              <li></li>
            </ul>
         <%  })%>
-  <%} else if(completes==null){ %>
+  <%} else if(!completes==null){ %>
     <h2>没有已完成信息！</h2>
       <% }  %>
   </body>

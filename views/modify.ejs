@@ -18,6 +18,9 @@
       textarea{
         resize:none;
       }
+      #record-id{
+        display: none;
+      }
     </style>
   </head>
   <body>
@@ -45,8 +48,10 @@
     <%}%>
 
 
-     <form class="" action="/addrecord" method="post">
+     <form class="" action="/addrecord
+     " method="post">
        <textarea  name="record" rows="8" cols="40"></textarea>
+       <input id="record-id" type="text" name="id" value="<%=info.id%>">
        <button type="submit">保存</button>
        <a href="/backshouye">退出</a>
      </form>
